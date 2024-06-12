@@ -5,6 +5,7 @@ body {
   margin: 0px;
   padding: 0px;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 * {
   margin: 0px;
@@ -47,6 +48,10 @@ nav h1 {
   height: 100dvh;
 }
 
+.title > h1 {
+  margin-bottom: 0.5em;
+}
+
 .carousel-container {
   display: flex;
   flex-direction: row;
@@ -54,7 +59,6 @@ nav h1 {
   border: 1px solid #ddd;
   background-color: #fff;
   padding: 1em;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .main-image {
@@ -133,11 +137,19 @@ nav h1 {
   padding: 1em 0 2em 0;
 }
 
+.gallery a {
+  width: 100%;
+}
+
 .gallery .thumbnail {
   border: 2px solid gray;
-  cursor: auto;
+  cursor: pointer;
   object-fit: fill;
   object-position: center;
+}
+
+.gallery .thumbnail:hover {
+  border-color: #007bff;
 }
 
 .item {

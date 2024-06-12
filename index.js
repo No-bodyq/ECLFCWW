@@ -3,6 +3,7 @@ const h3List = document.querySelectorAll("nav h3");
 document.addEventListener("DOMContentLoaded", function () {
   const thumbnails = document.querySelectorAll(".thumbnail");
   const mainImage = document.getElementById("current-image");
+  const thumbnailContainer = document.querySelector(".thumbnails");
   let currentIndex = 0;
   let timer;
 
@@ -13,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
       mainImage.classList.remove("fade-out");
       highlightThumbnail(index);
       currentIndex = index;
+      scrollToThumbnail(index);
     }, 700);
   }
 
@@ -48,10 +50,23 @@ document.addEventListener("DOMContentLoaded", function () {
     startTimer();
   }
 
+  function scrollToThumbnail(index) {
+    const thumbnail = thumbnails[index];
+    const containerRect = thumbnailContainer.getBoundingClientRect();
+    const thumbnailRect = thumbnail.getBoundingClientRect();
+    if (thumbnailRect.top < containerRect.top) {
+      thumbnailContainer.scrollTop += thumbnailRect.top - containerRect.top;
+    } else if (thumbnailRect.bottom > containerRect.bottom) {
+      thumbnailContainer.scrollTop +=
+        thumbnailRect.bottom - containerRect.bottom;
+    }
+  }
+
   window.nextImage = nextImage;
   window.prevImage = prevImage;
   window.selectImage = selectImage;
 
+  // Initialize the carousel with the first image and start the timer
   updateMainImage(0);
   startTimer();
 });
