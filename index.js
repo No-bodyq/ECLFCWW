@@ -66,7 +66,6 @@ document.addEventListener("DOMContentLoaded", function () {
   window.prevImage = prevImage;
   window.selectImage = selectImage;
 
-  // Initialize the carousel with the first image and start the timer
   updateMainImage(0);
   startTimer();
 });
